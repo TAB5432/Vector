@@ -17,24 +17,24 @@ void op_control() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::MotorGroup left_mg({1, 3});    
 	pros::MotorGroup right_mg({9, 10});  
-
-	while (true) {
+	bool running = true;
+	while (running) {
 	
-		int leftSpeed = master.get_analog(ANALOG_LEFT_Y);
-		int rightSpeed = master.get_analog(ANALOG_RIGHT_Y);
+		int left_speed = master.get_analog(ANALOG_LEFT_Y);
+		int right_speed = master.get_analog(ANALOG_RIGHT_Y);
 
-		if (abs((abs(leftSpeed) - abs(rightSpeed))) > 5) {
-			leftSpeed = rightSpeed;
+		if (abs((abs(left_speed) - abs(right_speed))) > 5) {
+			left_speed = right_speed;
 
 
-		if (leftSpeed > 5) {
-			left_mg.move(leftSpeed);
+		if (left_speed > 5) {
+			left_mg.move(left_speed);
 		}  else {
 			left_mg.move(0);
 		}
 
-		if (rightSpeed > 5) {
-			right_mg.move(rightSpeed);  
+		if (right_speed > 5) {
+			right_mg.move(right_speed);  
 		} else {
 			right_mg.move(0);  
 		}
