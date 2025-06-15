@@ -13,7 +13,7 @@
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
-void opcontrol() {
+void op_control() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::MotorGroup left_mg({1, 3});    
 	pros::MotorGroup right_mg({9, 10});  
@@ -29,8 +29,7 @@ void opcontrol() {
 
 		if (leftSpeed > 5) {
 			left_mg.move(leftSpeed);
-		}
-				} else {
+		}  else {
 			left_mg.move(0);
 		}
 
